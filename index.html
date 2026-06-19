@@ -3,60 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payit — Payez, encaissez, pilotez. En un seul endroit.</title>
-  <meta name="description" content="Payit est la plateforme de paiement tout-en-un : virements instantanés, cartes virtuelles, multi-devises et analytics en temps réel. Ouvrez un compte en 5 minutes." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+  <title>Payit — L'argent de votre business, enfin instantané.</title>
+  <meta name="description" content="Payit réunit compte pro, cartes, paiements instantanés et trésorerie en temps réel dans une interface claire. Conçu pour les pros qui vont vite." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: '#0A0E16', surface: '#0F1420', card: '#141A28',
-            line: 'rgba(255,255,255,0.08)', mint: '#38E08C', mintdim: '#1f7d53',
-            fg: '#F5F7FA', muted: '#9AA4B2',
-          },
-          fontFamily: {
-            display: ['"Bricolage Grotesque"', 'sans-serif'],
-            sans: ['Manrope', 'sans-serif'],
-          },
-          borderRadius: { '4xl': '2rem' },
-        },
-      },
-    }
+    tailwind.config = { theme: { extend: {
+      colors: { paper:'#F6F8FC', ink:'#0B1220', muted:'#5B6776', line:'#E7ECF3', mint:'#0FB981', mintdk:'#0B8F63', sky:'#2563EB' },
+      fontFamily: { display:['"Bricolage Grotesque"','sans-serif'], sans:['Manrope','sans-serif'], mono:['"JetBrains Mono"','monospace'] },
+      borderRadius: { '4xl':'2rem', '5xl':'2.75rem' },
+      boxShadow: { soft:'0 10px 40px rgba(15,23,42,.06)', lift:'0 20px 60px rgba(15,23,42,.10)', mint:'0 14px 40px rgba(15,185,129,.28)' },
+    } } }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
   <style>
-    html { scroll-behavior: smooth; }
-    body { background: #0A0E16; color: #F5F7FA; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
-    .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
-    .glow { background: radial-gradient(60% 60% at 50% 0%, rgba(56,224,140,0.18), transparent 70%); }
-    .card-glass { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
-    .grain::before { content:''; position:absolute; inset:0; pointer-events:none; opacity:.04; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-    .reveal { opacity: 0; transform: translateY(24px); }
-    .mint-text { color: #38E08C; }
-    .btn-mint { background:#38E08C; color:#06140C; }
-    .btn-mint:hover { box-shadow: 0 10px 40px rgba(56,224,140,.35); transform: translateY(-1px); }
-    .nav-link:hover { color:#F5F7FA; }
-    ::selection { background:#38E08C; color:#06140C; }
+    html{scroll-behavior:smooth}
+    body{background:#F6F8FC;color:#0B1220;font-family:'Manrope',sans-serif;-webkit-font-smoothing:antialiased}
+    .font-display{font-family:'Bricolage Grotesque',sans-serif}
+    .mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+    .bg-grid{background-image:linear-gradient(rgba(11,18,32,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(11,18,32,.04) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at 50% 0%,#000,transparent 70%)}
+    .halo{background:radial-gradient(45% 45% at 70% 0%,rgba(15,185,129,.14),transparent 70%),radial-gradient(40% 40% at 20% 10%,rgba(37,99,235,.08),transparent 70%)}
+    .grad-text{background:linear-gradient(100deg,#0FB981,#2563EB);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .reveal{opacity:0;transform:translateY(26px)}
+    .mint-text{color:#0B8F63}
+    .btn-mint{background:#0FB981;color:#fff;font-weight:700}
+    .btn-mint:hover{box-shadow:0 14px 40px rgba(15,185,129,.30);transform:translateY(-1px)}
+    .btn-ghost{background:#fff;border:1px solid #E7ECF3;color:#0B1220;font-weight:600}
+    .btn-ghost:hover{border-color:#cdd6e4;box-shadow:0 8px 24px rgba(15,23,42,.05)}
+    .card{background:#fff;border:1px solid #E7ECF3}
+    .pill{border:1px solid #E7ECF3;background:#fff}
+    .nav-link:hover{color:#0B1220}
+    .marquee{display:flex;gap:3rem;white-space:nowrap;animation:scroll 28s linear infinite}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+    .chip{font-family:'JetBrains Mono',monospace;font-size:11px}
+    .bar{background:linear-gradient(180deg,#0FB981,#9be8cf);border-radius:3px;width:9px}
+    ::selection{background:#0FB981;color:#fff}
   </style>
 </head>
 <body class="overflow-x-hidden">
 
-  <!-- ░░ NAV ░░ -->
+  <!-- NAV -->
   <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5">
-        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="9" fill="#38E08C"/>
-          <path d="M11 23V9h6.2c2.9 0 4.8 1.8 4.8 4.5S20.1 18 17.2 18H14.4v5H11Zm3.4-7.6h2.4c1.2 0 2-.7 2-1.9s-.8-1.9-2-1.9h-2.4v3.8Z" fill="#06140C"/>
-        </svg>
+      <a href="index.html" class="flex items-center gap-2.5">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="9" fill="#0FB981"/><path d="M11 23V9h6.2c2.9 0 4.8 1.8 4.8 4.5S20.1 18 17.2 18H14.4v5H11Zm3.4-7.6h2.4c1.2 0 2-.7 2-1.9s-.8-1.9-2-1.9h-2.4v3.8Z" fill="#fff"/></svg>
         <span class="font-display font-extrabold text-xl tracking-tight">Payit</span>
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
@@ -66,323 +58,206 @@
         <a href="a-propos.html" class="nav-link transition-colors">À propos</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="contact.html" class="hidden sm:block text-sm font-semibold text-muted hover:text-fg transition-colors">Se connecter</a>
-        <a href="contact.html" class="btn-mint text-sm font-bold px-4 py-2.5 rounded-full transition-all">Ouvrir un compte</a>
-        <button id="burger" class="md:hidden p-2 -mr-2" aria-label="Menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        </button>
+        <a href="contact.html" class="hidden sm:block text-sm font-semibold text-muted hover:text-ink transition-colors">Se connecter</a>
+        <a href="contact.html" class="btn-mint text-sm px-4 py-2.5 rounded-full transition-all">Ouvrir un compte</a>
+        <button id="burger" class="md:hidden p-2 -mr-2" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       </div>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-line bg-ink/95 backdrop-blur-lg">
-      <nav class="px-6 py-4 flex flex-col gap-4 text-sm font-medium">
-        <a href="fonctionnalites.html" class="mobile-close">Fonctionnalités</a>
-        <a href="tarifs.html" class="mobile-close">Tarifs</a>
-        <a href="securite.html" class="mobile-close">Sécurité</a>
-        <a href="a-propos.html" class="mobile-close">À propos</a>
-        <a href="contact.html" class="mobile-close">Contact</a>
-      </nav>
-    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-line bg-white/95 backdrop-blur-lg"><nav class="px-6 py-4 flex flex-col gap-4 text-sm font-medium"><a href="fonctionnalites.html" class="mobile-close">Fonctionnalités</a><a href="tarifs.html" class="mobile-close">Tarifs</a><a href="securite.html" class="mobile-close">Sécurité</a><a href="a-propos.html" class="mobile-close">À propos</a><a href="contact.html" class="mobile-close">Contact</a></nav></div>
   </header>
 
-  <!-- ░░ HERO ░░ -->
-  <section class="relative grain pt-32 pb-20 md:pt-40 md:pb-28">
-    <div class="absolute inset-0 glow pointer-events-none"></div>
-    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-center">
+  <!-- HERO -->
+  <section class="relative pt-32 md:pt-40 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-grid"></div>
+    <div class="absolute inset-0 halo pointer-events-none"></div>
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-10 items-center">
       <div>
-        <div class="hero-el inline-flex items-center gap-2 border border-line rounded-full px-3.5 py-1.5 mb-6">
+        <div class="hero-el inline-flex items-center gap-2 pill rounded-full px-3.5 py-1.5 mb-7 shadow-soft">
           <span class="w-1.5 h-1.5 rounded-full bg-mint"></span>
-          <span class="text-xs font-medium text-muted">Nouveau · Comptes multi-devises sans frais cachés</span>
+          <span class="text-xs font-medium text-muted">Compte pro nouvelle génération · agréé & sécurisé</span>
         </div>
-        <h1 class="hero-el font-display font-extrabold leading-[0.98] tracking-tight text-5xl sm:text-6xl lg:text-7xl mb-6">
-          Payez, encaissez,<br /><span class="mint-text">pilotez.</span> En un endroit.
+        <h1 class="hero-el font-display font-extrabold tracking-[-0.03em] leading-[0.95] text-[3.1rem] sm:text-7xl mb-6">
+          L'argent de votre<br />business, enfin<br /><span class="grad-text">instantané.</span>
         </h1>
         <p class="hero-el text-muted text-lg leading-relaxed max-w-md mb-8">
-          Payit réunit virements instantanés, cartes virtuelles, multi-devises et analytics en temps réel. Ouvrez un compte pro en 5 minutes, sans paperasse.
+          Compte, cartes, virements et trésorerie en temps réel — réunis dans une interface claire. Ouvrez votre compte Payit en 5 minutes, sans paperasse.
         </p>
-        <div class="hero-el flex flex-wrap items-center gap-4">
-          <a href="contact.html" class="btn-mint font-bold px-6 py-3.5 rounded-full transition-all">Ouvrir un compte gratuit</a>
-          <a href="#app" class="inline-flex items-center gap-2 font-semibold px-6 py-3.5 rounded-full border border-line hover:bg-white/5 transition-colors">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Voir la démo
-          </a>
+        <div class="hero-el flex flex-wrap items-center gap-3.5 mb-10">
+          <a href="contact.html" class="btn-mint px-6 py-3.5 rounded-full transition-all">Ouvrir un compte gratuit</a>
+          <a href="fonctionnalites.html" class="btn-ghost inline-flex items-center gap-2 px-6 py-3.5 rounded-full transition-all">Voir les fonctionnalités →</a>
         </div>
-        <div class="hero-el flex items-center gap-6 mt-10 text-sm text-muted">
-          <div><span class="text-fg font-bold text-lg">4,9/5</span> · 2 100 avis</div>
-          <div class="w-px h-8 bg-line"></div>
-          <div><span class="text-fg font-bold text-lg">0 €</span> · à l'ouverture</div>
+        <div class="hero-el flex items-center gap-5 text-sm text-muted">
+          <div class="flex -space-x-2"><span class="w-7 h-7 rounded-full bg-mint/30 border-2 border-paper"></span><span class="w-7 h-7 rounded-full bg-sky/20 border-2 border-paper"></span><span class="w-7 h-7 rounded-full bg-ink/10 border-2 border-paper"></span></div>
+          <span><span class="text-ink font-bold mono">40 000+</span> pros nous font confiance</span>
         </div>
       </div>
-      <div class="hero-img relative">
-        <div class="absolute -inset-6 glow"></div>
-        <img src="assets/hero.webp" alt="Aperçu de la plateforme de paiement Payit" class="relative w-full rounded-4xl border border-line shadow-2xl" />
+
+      <!-- MAQUETTE APP CLAIRE (HTML/CSS) -->
+      <div class="hero-mock relative">
+        <div class="absolute -inset-10 halo"></div>
+        <div class="relative card rounded-[2rem] p-4 shadow-lift">
+          <div class="flex items-center justify-between px-2 pt-1 pb-4">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-mint"></span><span class="text-sm font-semibold">Tableau de bord</span></div>
+            <span class="chip text-muted">EUR · FR</span>
+          </div>
+          <div class="rounded-2xl p-5 mb-3 text-white" style="background:linear-gradient(120deg,#0FB981,#0B8F63)">
+            <p class="chip text-white/70 mb-1">Solde disponible</p>
+            <p class="font-display font-extrabold text-3xl mono">128 940,50 €</p>
+            <div class="flex items-center gap-2 mt-2"><span class="chip" style="color:#d6fff0">▲ +12,4%</span><span class="chip text-white/60">ce mois</span></div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <div class="rounded-2xl p-4" style="background:#F6F8FC;border:1px solid #E7ECF3">
+              <p class="chip text-muted mb-3">Entrées / 7j</p>
+              <div class="flex items-end gap-1.5 h-16"><span class="bar" style="height:40%"></span><span class="bar" style="height:65%"></span><span class="bar" style="height:50%"></span><span class="bar" style="height:85%"></span><span class="bar" style="height:60%"></span><span class="bar" style="height:95%"></span><span class="bar" style="height:72%"></span></div>
+            </div>
+            <div class="rounded-2xl p-4 flex flex-col justify-between text-white" style="background:linear-gradient(135deg,#0B1220,#243049)">
+              <div class="flex justify-between items-start"><span class="chip text-white/60">Carte virtuelle</span><span class="w-6 h-4 rounded-sm bg-mint"></span></div>
+              <p class="mono text-sm tracking-widest mt-6">•••• 4921</p>
+            </div>
+          </div>
+          <div class="rounded-2xl p-4" style="background:#F6F8FC;border:1px solid #E7ECF3">
+            <p class="chip text-muted mb-3">Dernières transactions</p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between"><div class="flex items-center gap-2.5"><span class="w-7 h-7 rounded-lg bg-mint/15 flex items-center justify-center mint-text text-xs">↑</span><span class="text-sm">Nordwave SARL</span></div><span class="mono text-sm mint-text">+4 200 €</span></div>
+              <div class="flex items-center justify-between"><div class="flex items-center gap-2.5"><span class="w-7 h-7 rounded-lg bg-ink/5 flex items-center justify-center text-muted text-xs">↓</span><span class="text-sm">Abonnement SaaS</span></div><span class="mono text-sm text-muted">−89 €</span></div>
+              <div class="flex items-center justify-between"><div class="flex items-center gap-2.5"><span class="w-7 h-7 rounded-lg bg-ink/5 flex items-center justify-center text-muted text-xs">↓</span><span class="text-sm">Fournisseur · USD</span></div><span class="mono text-sm text-muted">−1 230 $</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ TRUST ░░ -->
-  <section class="border-y border-line py-8">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <p class="text-center text-xs uppercase tracking-widest text-muted mb-6">Adopté par des équipes qui vont vite</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-60 font-display font-bold text-lg">
-        <span>Nordwave</span><span>Lumen</span><span>Cabane&Co</span><span>Vélocité</span><span>Atlas Studio</span><span>Brio</span>
-      </div>
+  <!-- MARQUEE -->
+  <section class="border-y border-line bg-white py-5 overflow-hidden">
+    <div class="marquee font-display font-bold text-lg text-ink/25">
+      <span>Virements instantanés</span><span>•</span><span>Cartes illimitées</span><span>•</span><span>Multi-devises</span><span>•</span><span>Analytics temps réel</span><span>•</span><span>API ouverte</span><span>•</span><span>Sécurité DSP2</span><span>•</span>
+      <span>Virements instantanés</span><span>•</span><span>Cartes illimitées</span><span>•</span><span>Multi-devises</span><span>•</span><span>Analytics temps réel</span><span>•</span><span>API ouverte</span><span>•</span><span>Sécurité DSP2</span><span>•</span>
     </div>
   </section>
 
-  <!-- ░░ FEATURES ░░ -->
+  <!-- FEATURES bento -->
   <section id="features" class="py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="reveal max-w-2xl mb-16">
-        <p class="text-xs font-semibold uppercase tracking-widest mint-text mb-3">Fonctionnalités</p>
-        <h2 class="font-display font-bold text-4xl sm:text-5xl leading-tight">Tout votre argent, <span class="text-muted">sous contrôle.</span></h2>
+      <div class="reveal max-w-2xl mb-14">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mint-text mb-3">Une plateforme</p>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.05]">Conçue pour faire circuler <span class="grad-text">votre argent.</span></h2>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <!-- cards -->
-        <div class="reveal card-glass rounded-3xl p-7 hover:-translate-y-1 transition-transform">
-          <div class="w-11 h-11 rounded-xl bg-mint/15 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
-          <h3 class="font-display font-bold text-xl mb-2">Virements instantanés</h3>
-          <p class="text-muted text-sm leading-relaxed">Envoyez et recevez en quelques secondes, 24/7, partout en Europe. Plus d'attente interbancaire.</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="reveal card rounded-3xl p-7 md:row-span-2 shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-mint/12 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0FB981" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
+            <h3 class="font-display font-bold text-2xl mb-2">Virements instantanés</h3>
+            <p class="text-muted text-sm leading-relaxed">Émis et reçus en quelques secondes, 24/7, partout en Europe. SEPA instantané, liens de paiement, QR — tout est tracé et réconcilié automatiquement.</p>
+          </div>
+          <div class="mt-6 mono text-4xl font-bold grad-text">~2s</div>
         </div>
-        <div class="reveal card-glass rounded-3xl p-7 hover:-translate-y-1 transition-transform">
-          <div class="w-11 h-11 rounded-xl bg-mint/15 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
-          <h3 class="font-display font-bold text-xl mb-2">Cartes virtuelles illimitées</h3>
-          <p class="text-muted text-sm leading-relaxed">Créez une carte par abonnement, par équipe ou par projet. Plafonds et blocage en un tap.</p>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-7 hover:-translate-y-1 transition-transform">
-          <div class="w-11 h-11 rounded-xl bg-mint/15 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
-          <h3 class="font-display font-bold text-xl mb-2">Multi-devises</h3>
-          <p class="text-muted text-sm leading-relaxed">Détenez et convertissez 30+ devises au taux réel. Encaissez vos clients étrangers sans friction.</p>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-7 hover:-translate-y-1 transition-transform">
-          <div class="w-11 h-11 rounded-xl bg-mint/15 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
-          <h3 class="font-display font-bold text-xl mb-2">Analytics temps réel</h3>
-          <p class="text-muted text-sm leading-relaxed">Trésorerie, dépenses par catégorie, prévisions. Vous savez où va chaque euro, à la seconde.</p>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-7 hover:-translate-y-1 transition-transform">
-          <div class="w-11 h-11 rounded-xl bg-mint/15 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6z"/></svg></div>
-          <h3 class="font-display font-bold text-xl mb-2">Sécurité bancaire</h3>
-          <p class="text-muted text-sm leading-relaxed">Chiffrement de bout en bout, 3D Secure, biométrie et fonds protégés. Conforme DSP2.</p>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-7 hover:-translate-y-1 transition-transform">
-          <div class="w-11 h-11 rounded-xl bg-mint/15 flex items-center justify-center mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m0 8v3a2 2 0 0 0 2 2h3m8-18h3a2 2 0 0 1 2 2v3m0 8v3a2 2 0 0 1-2 2h-3"/></svg></div>
-          <h3 class="font-display font-bold text-xl mb-2">API & intégrations</h3>
-          <p class="text-muted text-sm leading-relaxed">Branchez Payit à vos outils (compta, e-commerce, CRM) via une API claire et des webhooks.</p>
-        </div>
+        <div class="reveal card rounded-3xl p-7 shadow-soft"><div class="w-10 h-10 rounded-xl bg-sky/10 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div><h3 class="font-display font-bold text-lg mb-1.5">Cartes virtuelles illimitées</h3><p class="text-muted text-sm leading-relaxed">Une carte par projet ou par équipe, plafonds et blocage en un tap.</p></div>
+        <div class="reveal card rounded-3xl p-7 shadow-soft"><div class="w-10 h-10 rounded-xl bg-mint/12 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0FB981" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div><h3 class="font-display font-bold text-lg mb-1.5">Multi-devises (30+)</h3><p class="text-muted text-sm leading-relaxed">Détenez et convertissez au taux réel, sans marge cachée.</p></div>
+        <div class="reveal card rounded-3xl p-7 shadow-soft"><div class="w-10 h-10 rounded-xl bg-sky/10 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><h3 class="font-display font-bold text-lg mb-1.5">Analytics temps réel</h3><p class="text-muted text-sm leading-relaxed">Trésorerie, dépenses, prévisions — à la seconde près.</p></div>
+        <div class="reveal card rounded-3xl p-7 shadow-soft"><div class="w-10 h-10 rounded-xl bg-mint/12 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0FB981" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6z"/></svg></div><h3 class="font-display font-bold text-lg mb-1.5">Sécurité bancaire</h3><p class="text-muted text-sm leading-relaxed">Chiffrement AES-256, 3D Secure, biométrie. Conforme DSP2.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ APP SHOWCASE ░░ -->
-  <section id="app" class="py-20 md:py-28 border-t border-line">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center">
-      <div class="reveal relative order-2 lg:order-1 flex justify-center">
-        <div class="absolute -inset-8 glow"></div>
-        <img src="assets/app.webp" alt="L'application mobile Payit" class="relative w-[280px] sm:w-[320px] rounded-4xl border border-line shadow-2xl" />
-      </div>
+  <!-- APP SECTION (image générée claire) -->
+  <section id="app" class="py-8 md:py-12">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal order-2 lg:order-1 flex justify-center"><img src="assets/app-light.webp" alt="L'application Payit" class="w-[300px] sm:w-[340px] rounded-4xl shadow-lift" /></div>
       <div class="order-1 lg:order-2">
-        <p class="reveal text-xs font-semibold uppercase tracking-widest mint-text mb-3">L'application</p>
-        <h2 class="reveal font-display font-bold text-4xl sm:text-5xl leading-tight mb-6">Votre banque pro, dans votre poche.</h2>
-        <ul class="space-y-5">
-          <li class="reveal flex gap-4">
-            <span class="mt-1 w-6 h-6 rounded-full bg-mint/15 flex items-center justify-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><p class="font-semibold">Solde et flux en direct</p><p class="text-muted text-sm">Chaque transaction notifiée, catégorisée, réconciliée automatiquement.</p></div>
-          </li>
-          <li class="reveal flex gap-4">
-            <span class="mt-1 w-6 h-6 rounded-full bg-mint/15 flex items-center justify-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><p class="font-semibold">Payez en 2 secondes</p><p class="text-muted text-sm">Scannez, validez en biométrie, c'est envoyé. Reçu généré pour vous.</p></div>
-          </li>
-          <li class="reveal flex gap-4">
-            <span class="mt-1 w-6 h-6 rounded-full bg-mint/15 flex items-center justify-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38E08C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><p class="font-semibold">Pilotez votre équipe</p><p class="text-muted text-sm">Cartes, plafonds et accès par collaborateur — vous gardez la main, eux gagnent du temps.</p></div>
-          </li>
+        <p class="reveal text-xs font-semibold uppercase tracking-[0.2em] mint-text mb-3">L'application</p>
+        <h2 class="reveal font-display font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.05] mb-6">Votre banque pro,<br/>dans votre poche.</h2>
+        <ul class="space-y-4">
+          <li class="reveal flex gap-3"><span class="mt-1 w-6 h-6 rounded-full bg-mint/15 flex items-center justify-center shrink-0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0FB981" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold">Solde & flux en direct</p><p class="text-muted text-sm">Chaque transaction notifiée, catégorisée, réconciliée.</p></div></li>
+          <li class="reveal flex gap-3"><span class="mt-1 w-6 h-6 rounded-full bg-mint/15 flex items-center justify-center shrink-0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0FB981" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold">Payez en 2 secondes</p><p class="text-muted text-sm">Validez en biométrie, reçu généré pour vous.</p></div></li>
+          <li class="reveal flex gap-3"><span class="mt-1 w-6 h-6 rounded-full bg-mint/15 flex items-center justify-center shrink-0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0FB981" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold">Pilotez votre équipe</p><p class="text-muted text-sm">Cartes, plafonds et accès par collaborateur.</p></div></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ░░ HOW IT WORKS ░░ -->
-  <section class="py-24 md:py-28 border-t border-line">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="reveal text-center max-w-2xl mx-auto mb-16">
-        <p class="text-xs font-semibold uppercase tracking-widest mint-text mb-3">Comment ça marche</p>
-        <h2 class="font-display font-bold text-4xl sm:text-5xl leading-tight">Opérationnel en 5 minutes.</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="reveal card-glass rounded-3xl p-8">
-          <span class="font-display font-extrabold text-5xl text-white/10">01</span>
-          <h3 class="font-display font-bold text-xl mt-4 mb-2">Créez votre compte</h3>
-          <p class="text-muted text-sm leading-relaxed">Inscription 100 % en ligne, vérification d'identité en quelques minutes. Aucun rendez-vous.</p>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-8">
-          <span class="font-display font-extrabold text-5xl text-white/10">02</span>
-          <h3 class="font-display font-bold text-xl mt-4 mb-2">Approvisionnez & connectez</h3>
-          <p class="text-muted text-sm leading-relaxed">Ajoutez des fonds, vos cartes et vos outils. Payit synchronise tout automatiquement.</p>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-8">
-          <span class="font-display font-extrabold text-5xl text-white/10">03</span>
-          <h3 class="font-display font-bold text-xl mt-4 mb-2">Payez & encaissez</h3>
-          <p class="text-muted text-sm leading-relaxed">Émettez des liens de paiement, des cartes, encaissez en multi-devises. Vous pilotez en temps réel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ░░ STATS ░░ -->
-  <section id="security" class="py-20 border-t border-line">
+  <!-- STATS -->
+  <section id="security" class="py-16">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-px bg-line rounded-3xl overflow-hidden border border-line">
-      <div class="reveal bg-ink p-8 text-center"><p class="font-display font-extrabold text-4xl mint-text" data-count="180">0</p><p class="text-muted text-sm mt-2">pays couverts</p></div>
-      <div class="reveal bg-ink p-8 text-center"><p class="font-display font-extrabold text-4xl mint-text"><span data-count="2">0</span>s</p><p class="text-muted text-sm mt-2">par virement</p></div>
-      <div class="reveal bg-ink p-8 text-center"><p class="font-display font-extrabold text-4xl mint-text"><span data-count="99">0</span>,9%</p><p class="text-muted text-sm mt-2">de disponibilité</p></div>
-      <div class="reveal bg-ink p-8 text-center"><p class="font-display font-extrabold text-4xl mint-text"><span data-count="40">0</span>k+</p><p class="text-muted text-sm mt-2">comptes ouverts</p></div>
+      <div class="reveal bg-white p-8 text-center"><p class="font-display font-extrabold text-4xl mono grad-text" data-count="180">0</p><p class="text-muted text-sm mt-2">pays couverts</p></div>
+      <div class="reveal bg-white p-8 text-center"><p class="font-display font-extrabold text-4xl mono grad-text"><span data-count="2">0</span>s</p><p class="text-muted text-sm mt-2">par virement</p></div>
+      <div class="reveal bg-white p-8 text-center"><p class="font-display font-extrabold text-4xl mono grad-text"><span data-count="99">0</span>,9%</p><p class="text-muted text-sm mt-2">de disponibilité</p></div>
+      <div class="reveal bg-white p-8 text-center"><p class="font-display font-extrabold text-4xl mono grad-text"><span data-count="40">0</span>k+</p><p class="text-muted text-sm mt-2">comptes ouverts</p></div>
     </div>
   </section>
 
-  <!-- ░░ PRICING ░░ -->
-  <section id="pricing" class="py-24 md:py-32">
+  <!-- HOW -->
+  <section class="py-24 md:py-28">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="reveal text-center max-w-2xl mx-auto mb-12">
-        <p class="text-xs font-semibold uppercase tracking-widest mint-text mb-3">Tarifs</p>
-        <h2 class="font-display font-bold text-4xl sm:text-5xl leading-tight mb-6">Un prix clair. Zéro surprise.</h2>
-        <div class="inline-flex items-center gap-1 p-1 rounded-full border border-line bg-card">
+      <div class="reveal text-center max-w-2xl mx-auto mb-14"><p class="text-xs font-semibold uppercase tracking-[0.2em] mint-text mb-3">Comment ça marche</p><h2 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight">Opérationnel en 5 minutes.</h2></div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="reveal card rounded-3xl p-8 shadow-soft"><span class="font-display font-extrabold text-5xl mono grad-text">01</span><h3 class="font-display font-bold text-xl mt-4 mb-2">Créez votre compte</h3><p class="text-muted text-sm leading-relaxed">100 % en ligne, vérification en quelques minutes. Aucun rendez-vous.</p></div>
+        <div class="reveal card rounded-3xl p-8 shadow-soft"><span class="font-display font-extrabold text-5xl mono grad-text">02</span><h3 class="font-display font-bold text-xl mt-4 mb-2">Connectez vos outils</h3><p class="text-muted text-sm leading-relaxed">Compta, e-commerce, CRM. Payit synchronise tout automatiquement.</p></div>
+        <div class="reveal card rounded-3xl p-8 shadow-soft"><span class="font-display font-extrabold text-5xl mono grad-text">03</span><h3 class="font-display font-bold text-xl mt-4 mb-2">Payez & encaissez</h3><p class="text-muted text-sm leading-relaxed">Cartes, liens, multi-devises. Vous pilotez en temps réel.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="reveal text-center max-w-2xl mx-auto mb-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mint-text mb-3">Tarifs</p>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight mb-6">Un prix clair. Zéro surprise.</h2>
+        <div class="inline-flex items-center gap-1 p-1 rounded-full pill shadow-soft">
           <button id="billMonthly" class="px-4 py-1.5 rounded-full text-sm font-semibold btn-mint">Mensuel</button>
-          <button id="billYearly" class="px-4 py-1.5 rounded-full text-sm font-semibold text-muted">Annuel <span class="mint-text">-20%</span></button>
+          <button id="billYearly" class="px-4 py-1.5 rounded-full text-sm font-semibold text-muted">Annuel <span class="mint-text">−20%</span></button>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 gap-5 items-start">
-        <div class="reveal card-glass rounded-3xl p-8">
-          <h3 class="font-display font-bold text-xl mb-1">Starter</h3>
-          <p class="text-muted text-sm mb-6">Pour se lancer.</p>
-          <p class="font-display font-extrabold text-5xl mb-1"><span class="price" data-m="0" data-y="0">0</span><span class="text-lg font-bold">€</span></p>
-          <p class="text-muted text-sm mb-6">/ mois</p>
-          <a href="#cta" class="block text-center font-semibold py-3 rounded-full border border-line hover:bg-white/5 transition-colors mb-6">Commencer</a>
-          <ul class="space-y-3 text-sm text-muted">
-            <li class="flex gap-2"><span class="mint-text">✓</span> 1 carte virtuelle</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> Virements SEPA</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> App mobile complète</li>
-          </ul>
-        </div>
-        <div class="reveal rounded-3xl p-8 border-2 relative" style="border-color:#38E08C; background:linear-gradient(180deg, rgba(56,224,140,.08), transparent);">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 btn-mint text-xs font-bold px-3 py-1 rounded-full">Le plus choisi</span>
-          <h3 class="font-display font-bold text-xl mb-1">Pro</h3>
-          <p class="text-muted text-sm mb-6">Pour les indés & TPE.</p>
-          <p class="font-display font-extrabold text-5xl mb-1"><span class="price" data-m="19" data-y="15">19</span><span class="text-lg font-bold">€</span></p>
-          <p class="text-muted text-sm mb-6">/ mois</p>
-          <a href="#cta" class="block text-center btn-mint font-bold py-3 rounded-full transition-all mb-6">Essayer 30 jours</a>
-          <ul class="space-y-3 text-sm text-muted">
-            <li class="flex gap-2"><span class="mint-text">✓</span> Cartes illimitées</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> Multi-devises (30+)</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> Analytics avancés</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> Support prioritaire</li>
-          </ul>
-        </div>
-        <div class="reveal card-glass rounded-3xl p-8">
-          <h3 class="font-display font-bold text-xl mb-1">Business</h3>
-          <p class="text-muted text-sm mb-6">Pour les équipes.</p>
-          <p class="font-display font-extrabold text-5xl mb-1"><span class="price" data-m="49" data-y="39">49</span><span class="text-lg font-bold">€</span></p>
-          <p class="text-muted text-sm mb-6">/ mois</p>
-          <a href="#cta" class="block text-center font-semibold py-3 rounded-full border border-line hover:bg-white/5 transition-colors mb-6">Parler à un expert</a>
-          <ul class="space-y-3 text-sm text-muted">
-            <li class="flex gap-2"><span class="mint-text">✓</span> Tout Pro, +</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> Accès multi-utilisateurs</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> API & webhooks</li>
-            <li class="flex gap-2"><span class="mint-text">✓</span> Gestionnaire dédié</li>
-          </ul>
-        </div>
+      <div class="grid md:grid-cols-3 gap-4 items-start">
+        <div class="reveal card rounded-3xl p-8 shadow-soft"><h3 class="font-display font-bold text-xl mb-1">Starter</h3><p class="text-muted text-sm mb-6">Pour se lancer.</p><p class="font-display font-extrabold text-5xl mono mb-1"><span class="price" data-m="0" data-y="0">0</span>€</p><p class="text-muted text-sm mb-6">/ mois</p><a href="contact.html" class="block text-center btn-ghost py-3 rounded-full transition-all mb-6">Commencer</a><ul class="space-y-3 text-sm text-muted"><li class="flex gap-2"><span class="mint-text">✓</span> 1 carte virtuelle</li><li class="flex gap-2"><span class="mint-text">✓</span> Virements SEPA</li><li class="flex gap-2"><span class="mint-text">✓</span> App mobile complète</li></ul></div>
+        <div class="reveal rounded-3xl p-8 relative bg-white shadow-lift" style="border:2px solid #0FB981"><span class="absolute -top-3 left-1/2 -translate-x-1/2 btn-mint text-xs px-3 py-1 rounded-full">Le plus choisi</span><h3 class="font-display font-bold text-xl mb-1">Pro</h3><p class="text-muted text-sm mb-6">Pour les indés & TPE.</p><p class="font-display font-extrabold text-5xl mono mb-1"><span class="price" data-m="19" data-y="15">19</span>€</p><p class="text-muted text-sm mb-6">/ mois</p><a href="contact.html" class="block text-center btn-mint py-3 rounded-full transition-all mb-6">Essayer 30 jours</a><ul class="space-y-3 text-sm text-muted"><li class="flex gap-2"><span class="mint-text">✓</span> Cartes illimitées</li><li class="flex gap-2"><span class="mint-text">✓</span> Multi-devises (30+)</li><li class="flex gap-2"><span class="mint-text">✓</span> Analytics avancés</li><li class="flex gap-2"><span class="mint-text">✓</span> Support prioritaire</li></ul></div>
+        <div class="reveal card rounded-3xl p-8 shadow-soft"><h3 class="font-display font-bold text-xl mb-1">Business</h3><p class="text-muted text-sm mb-6">Pour les équipes.</p><p class="font-display font-extrabold text-5xl mono mb-1"><span class="price" data-m="49" data-y="39">49</span>€</p><p class="text-muted text-sm mb-6">/ mois</p><a href="contact.html" class="block text-center btn-ghost py-3 rounded-full transition-all mb-6">Parler à un expert</a><ul class="space-y-3 text-sm text-muted"><li class="flex gap-2"><span class="mint-text">✓</span> Tout Pro, +</li><li class="flex gap-2"><span class="mint-text">✓</span> Multi-utilisateurs</li><li class="flex gap-2"><span class="mint-text">✓</span> API & webhooks</li><li class="flex gap-2"><span class="mint-text">✓</span> Gestionnaire dédié</li></ul></div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ TESTIMONIAL ░░ -->
-  <section class="py-20 border-t border-line">
+  <!-- TESTIMONIAL -->
+  <section class="py-16">
     <div class="reveal max-w-3xl mx-auto px-5 sm:px-8 text-center">
-      <p class="font-display font-bold text-2xl sm:text-3xl leading-snug mb-8">« On a remplacé 3 outils par Payit. Trésorerie en temps réel, cartes par projet, encaissement à l'international — on a gagné une demi-journée par semaine. »</p>
-      <div class="flex items-center justify-center gap-3">
-        <div class="w-11 h-11 rounded-full bg-mint/20 flex items-center justify-center font-display font-bold mint-text">CL</div>
-        <div class="text-left"><p class="font-semibold text-sm">Camille Lefranc</p><p class="text-muted text-xs">CEO · Nordwave</p></div>
-      </div>
+      <div class="mono mint-text text-sm mb-4">★★★★★</div>
+      <p class="font-display font-bold text-2xl sm:text-3xl leading-snug tracking-tight mb-7">« On a remplacé 3 outils par Payit. Trésorerie en temps réel, cartes par projet, encaissement à l'international — une demi-journée gagnée chaque semaine. »</p>
+      <div class="flex items-center justify-center gap-3"><div class="w-11 h-11 rounded-full bg-mint/20 flex items-center justify-center font-display font-bold mint-text">CL</div><div class="text-left"><p class="font-semibold text-sm">Camille Lefranc</p><p class="text-muted text-xs">CEO · Nordwave</p></div></div>
     </div>
   </section>
 
-  <!-- ░░ FINAL CTA ░░ -->
+  <!-- CTA -->
   <section id="cta" class="py-24 md:py-32">
     <div class="reveal relative max-w-5xl mx-auto px-5 sm:px-8">
-      <div class="relative rounded-4xl border border-line p-10 md:p-16 text-center overflow-hidden" style="background:linear-gradient(180deg, rgba(56,224,140,.10), rgba(20,26,40,.6));">
-        <div class="absolute inset-0 glow"></div>
-        <div class="relative">
-          <h2 class="font-display font-extrabold text-4xl sm:text-6xl leading-tight mb-5">Prêt à reprendre le contrôle ?</h2>
-          <p class="text-muted text-lg max-w-xl mx-auto mb-8">Ouvrez votre compte Payit gratuitement. 5 minutes, aucune carte requise pour démarrer.</p>
-          <a href="contact.html" class="btn-mint font-bold px-8 py-4 rounded-full transition-all inline-block">Ouvrir mon compte gratuit</a>
-        </div>
+      <div class="relative rounded-5xl p-10 md:p-16 text-center overflow-hidden text-white" style="background:linear-gradient(135deg,#0B8F63,#0B1220)">
+        <div class="absolute inset-0 bg-grid opacity-20"></div>
+        <div class="relative"><h2 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight leading-[1.02] mb-5">Reprenez le contrôle<br />de votre argent.</h2><p class="text-white/70 text-lg max-w-xl mx-auto mb-8">Ouvrez votre compte Payit gratuitement. 5 minutes, aucune carte requise.</p><a href="contact.html" class="bg-white text-ink font-bold px-8 py-4 rounded-full inline-block hover:opacity-90 transition-all">Ouvrir mon compte gratuit</a></div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ FOOTER ░░ -->
-  <footer class="border-t border-line py-14">
+  <!-- FOOTER -->
+  <footer class="border-t border-line bg-white py-14">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <div>
-          <div class="flex items-center gap-2.5 mb-4">
-            <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="9" fill="#38E08C"/><path d="M11 23V9h6.2c2.9 0 4.8 1.8 4.8 4.5S20.1 18 17.2 18H14.4v5H11Zm3.4-7.6h2.4c1.2 0 2-.7 2-1.9s-.8-1.9-2-1.9h-2.4v3.8Z" fill="#06140C"/></svg>
-            <span class="font-display font-extrabold text-lg">Payit</span>
-          </div>
-          <p class="text-muted text-sm leading-relaxed">La plateforme de paiement tout-en-un pour les pros qui vont vite.</p>
-        </div>
-        <div><p class="font-semibold text-sm mb-4">Produit</p><ul class="space-y-2.5 text-sm text-muted"><li><a href="#features" class="hover:text-fg">Fonctionnalités</a></li><li><a href="#app" class="hover:text-fg">L'application</a></li><li><a href="#pricing" class="hover:text-fg">Tarifs</a></li><li><a href="#security" class="hover:text-fg">Sécurité</a></li></ul></div>
-        <div><p class="font-semibold text-sm mb-4">Entreprise</p><ul class="space-y-2.5 text-sm text-muted"><li><a href="#" class="hover:text-fg">À propos</a></li><li><a href="#" class="hover:text-fg">Blog</a></li><li><a href="#" class="hover:text-fg">Carrières</a></li><li><a href="#" class="hover:text-fg">Contact</a></li></ul></div>
-        <div><p class="font-semibold text-sm mb-4">Newsletter</p><p class="text-muted text-sm mb-3">Les nouveautés produit, une fois par mois.</p>
-          <form class="flex gap-2"><input type="email" placeholder="Votre email" class="flex-1 bg-card border border-line rounded-full px-4 py-2.5 text-sm outline-none focus:border-mint" /><button class="btn-mint font-bold px-4 rounded-full text-sm">→</button></form>
-        </div>
+        <div><div class="flex items-center gap-2.5 mb-4"><svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="9" fill="#0FB981"/><path d="M11 23V9h6.2c2.9 0 4.8 1.8 4.8 4.5S20.1 18 17.2 18H14.4v5H11Zm3.4-7.6h2.4c1.2 0 2-.7 2-1.9s-.8-1.9-2-1.9h-2.4v3.8Z" fill="#fff"/></svg><span class="font-display font-extrabold text-lg">Payit</span></div><p class="text-muted text-sm leading-relaxed">Le compte pro tout-en-un pour les business qui vont vite.</p></div>
+        <div><p class="font-semibold text-sm mb-4">Produit</p><ul class="space-y-2.5 text-sm text-muted"><li><a href="fonctionnalites.html" class="hover:text-ink">Fonctionnalités</a></li><li><a href="tarifs.html" class="hover:text-ink">Tarifs</a></li><li><a href="securite.html" class="hover:text-ink">Sécurité</a></li></ul></div>
+        <div><p class="font-semibold text-sm mb-4">Entreprise</p><ul class="space-y-2.5 text-sm text-muted"><li><a href="a-propos.html" class="hover:text-ink">À propos</a></li><li><a href="contact.html" class="hover:text-ink">Contact</a></li></ul></div>
+        <div><p class="font-semibold text-sm mb-4">Newsletter</p><p class="text-muted text-sm mb-3">Les nouveautés produit, une fois par mois.</p><form class="flex gap-2"><input type="email" placeholder="Votre email" class="flex-1 bg-paper border border-line rounded-full px-4 py-2.5 text-sm outline-none focus:border-mint" /><button class="btn-mint px-4 rounded-full text-sm">→</button></form></div>
       </div>
-      <div class="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
-        <p>© 2026 Payit — Démo conçue par vivesmedia.com</p>
-        <div class="flex gap-5"><a href="#" class="hover:text-fg">Mentions légales</a><a href="#" class="hover:text-fg">Confidentialité</a><a href="#" class="hover:text-fg">CGU</a></div>
-      </div>
+      <div class="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted"><p>© 2026 Payit — Démo conçue par vivesmedia.com</p><div class="flex gap-5"><a href="#" class="hover:text-ink">Mentions légales</a><a href="#" class="hover:text-ink">Confidentialité</a></div></div>
     </div>
   </footer>
 
   <script>
-    // Nav scroll state
-    const nav = document.getElementById('nav');
-    addEventListener('scroll', () => {
-      if (scrollY > 20) nav.classList.add('bg-ink/80','backdrop-blur-lg','border-b','border-line');
-      else nav.classList.remove('bg-ink/80','backdrop-blur-lg','border-b','border-line');
-    });
-    // Mobile menu
-    const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
-    burger.addEventListener('click', () => menu.classList.toggle('hidden'));
-    document.querySelectorAll('.mobile-close').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
-
-    // Pricing toggle
-    const m = document.getElementById('billMonthly'), y = document.getElementById('billYearly');
-    function setBilling(yearly) {
-      document.querySelectorAll('.price').forEach(p => p.textContent = yearly ? p.dataset.y : p.dataset.m);
-      m.classList.toggle('btn-mint', !yearly); m.classList.toggle('text-muted', yearly);
-      y.classList.toggle('btn-mint', yearly); y.classList.toggle('text-muted', !yearly);
-    }
-    m.addEventListener('click', () => setBilling(false));
-    y.addEventListener('click', () => setBilling(true));
-
-    // GSAP animations
+    const nav=document.getElementById('nav');addEventListener('scroll',()=>{if(scrollY>20)nav.classList.add('bg-white/85','backdrop-blur-lg','border-b','border-line','shadow-soft');else nav.classList.remove('bg-white/85','backdrop-blur-lg','border-b','border-line','shadow-soft')});
+    const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');burger.addEventListener('click',()=>menu.classList.toggle('hidden'));document.querySelectorAll('.mobile-close').forEach(a=>a.addEventListener('click',()=>menu.classList.add('hidden')));
+    const m=document.getElementById('billMonthly'),y=document.getElementById('billYearly');function setBilling(yr){document.querySelectorAll('.price').forEach(p=>p.textContent=yr?p.dataset.y:p.dataset.m);m.classList.toggle('btn-mint',!yr);m.classList.toggle('text-muted',yr);y.classList.toggle('btn-mint',yr);y.classList.toggle('text-muted',!yr)}m.addEventListener('click',()=>setBilling(false));y.addEventListener('click',()=>setBilling(true));
     gsap.registerPlugin(ScrollTrigger);
-    gsap.set('.hero-el', { opacity: 0, y: 24 });
-    gsap.set('.hero-img', { opacity: 0, y: 40, scale: .96 });
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.to('.hero-el', { opacity: 1, y: 0, duration: .8, stagger: .12 })
-      .to('.hero-img', { opacity: 1, y: 0, scale: 1, duration: 1 }, '-=.6');
-
-    document.querySelectorAll('.reveal').forEach(el => {
-      gsap.to(el, { opacity: 1, y: 0, duration: .7, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 85%' } });
-    });
-
-    // Counters
-    document.querySelectorAll('[data-count]').forEach(el => {
-      const end = +el.dataset.count;
-      ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => {
-        gsap.fromTo(el, { innerText: 0 }, { innerText: end, duration: 1.4, ease: 'power2.out',
-          snap: { innerText: 1 }, onUpdate: () => el.innerText = Math.ceil(el.innerText) });
-      }});
-    });
+    gsap.set('.hero-el',{opacity:0,y:26});gsap.set('.hero-mock',{opacity:0,y:40,scale:.96});
+    gsap.timeline({defaults:{ease:'power3.out'}}).to('.hero-el',{opacity:1,y:0,duration:.8,stagger:.1}).to('.hero-mock',{opacity:1,y:0,scale:1,duration:1},'-=.6');
+    document.querySelectorAll('.reveal').forEach(el=>gsap.to(el,{opacity:1,y:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}}));
+    document.querySelectorAll('[data-count]').forEach(el=>{const end=+el.dataset.count;ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>gsap.fromTo(el,{innerText:0},{innerText:end,duration:1.4,ease:'power2.out',snap:{innerText:1},onUpdate:()=>el.innerText=Math.ceil(el.innerText)})})});
   </script>
 </body>
 </html>
